@@ -31,10 +31,12 @@
 
 ## D. Decision Making
 
-- Since we are working together at the same time for lab1, concensus will be natually granted from each other.
+- Since we are working together at the same time for lab1 and only two of us in the group, concensus needed before making decision.
 - Seek to find all needed information and data.
 - Discuss criteria (cost, time, impact, ect.) for making a decision before choosing an option.
 - Encourage and explore different interpretations of data.
 - If one of us fixates on a particular idea, we can go for TA or Firas to ask for more opinion. And then seek to find agreement.
 
+Fengcheng Liu
 
+Haotian Jin
