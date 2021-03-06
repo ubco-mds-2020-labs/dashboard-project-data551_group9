@@ -2,7 +2,7 @@
 ----
 ## What we have implemented:
 
-At milestone2 stage, we have implemented four graphs into our hr-marketing-analytics project. Basically it suggests the way it is in our ![milestone1](https://github.com/ubco-mds-2020-labs/dashboard-project-data551_group9/releases/tag/v1.0) stage. The difference is that we split four graphs into two tabs. Audience can select the topic that they want to explore, either HR perspective or marketing perspective. 
+At milestone2 stage, we have implemented four graphs into our hr-marketing-analytics project. Basically it suggests the way it is in our [milestone1](https://github.com/ubco-mds-2020-labs/dashboard-project-data551_group9/releases/tag/v1.0) stage. The difference is that we split four graphs into two tabs. Audience can select the topic that they want to explore, either HR perspective or marketing perspective. 
 
 - The first tab (HR perspective): title is given as "HR Analytics on Training". On the left hand side, there are two dropdown menus and one radio button menu. Users can select desired education levels and do comparisons by using the two dropdown menus. Users can select previous company size by using the radio button menu. These two graphs can help HR to explore the relationship between education level or previous company size, and training hours. 
 

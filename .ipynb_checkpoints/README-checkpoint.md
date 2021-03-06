@@ -2,9 +2,9 @@
 
 Group members: Fengcheng Liu, Haotian Jin
 
-Dataset: ![analysis.csv](https://github.com/ubco-mds-2020-labs/dashboard-project-data551_group9/blob/main/data/raw/analysis.csv)
+Dataset: [analysis.csv](https://github.com/ubco-mds-2020-labs/dashboard-project-data551_group9/blob/main/data/raw/analysis.csv)
 
-Dashboard address: ![hr-marketing-analytics](https://hr-marketing-analytics.herokuapp.com/)
+Dashboard address: [hr-marketing-analytics](https://hr-marketing-analytics.herokuapp.com/)
 
 ## Welcome!
 ----
