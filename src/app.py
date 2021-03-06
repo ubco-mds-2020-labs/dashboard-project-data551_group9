@@ -10,7 +10,7 @@ import altair as alt
 from vega_datasets import data
 
 alt.data_transformers.disable_max_rows()
-hr = pd.read_csv("analysis.csv")
+hr = pd.read_csv("../data/raw/analysis.csv")
 hr1 = hr[["education_level", "training_hours", "gender"]]
 hr1 = hr1.dropna()
 bins = pd.Series(np.linspace(hr1.training_hours.min()-1, hr1.training_hours.max(), 11)).tolist()
