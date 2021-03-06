@@ -1,0 +1,8 @@
+numpy
+pandas
+dash==1.19.0
+dash_bootstrap_components
+altair
+vega_datasets
+plotly==4.14.3
+gunicorn
