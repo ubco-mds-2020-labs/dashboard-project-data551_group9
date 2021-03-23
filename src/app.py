@@ -10,7 +10,7 @@ import altair as alt
 from vega_datasets import data
 
 alt.data_transformers.disable_max_rows()
-hr = pd.read_csv("data/raw/analysis.csv")
+hr = pd.read_csv("../data/raw/analysis.csv")
 hr1 = hr[["education_level", "training_hours", "gender"]]
 hr1 = hr1.dropna()
 bins = pd.Series(np.linspace(hr1.training_hours.min()-1, hr1.training_hours.max(), 11)).tolist()
@@ -37,9 +37,14 @@ hr4["education_level"].replace("Graduate", "Bachelor", inplace = True)
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+colors = {
+    'background': '#e8e8e8',
+    'text': '#7FDBFF'
+}
+
 server = app.server
 
-app.layout = dbc.Container([
+app.layout = html.Div(style={'backgroundColor': colors['background']},children=[dbc.Container([
     html.Br(),
     dcc.Tabs(id='tabs', value='tab-1', children=[
         dbc.Tab([
@@ -82,8 +87,28 @@ app.layout = dbc.Container([
                         '''),
                         dcc.RadioItems(id = "radio_items", options = [
                             {'label': ' ' + i, 'value': i} for i in [hr2.company_size.unique()[0], hr2.company_size.unique()[2], hr2.company_size.unique()[6], hr2.company_size.unique()[1], hr2.company_size.unique()[7], hr2.company_size.unique()[8], hr2.company_size.unique()[5], hr2.company_size.unique()[4], hr2.company_size.unique()[3]]
-                        ], value = "50-99", labelStyle={'display': 'block'})])
-                ], md = 5),
+                        ], value = "50-99", labelStyle={'display': 'block'}),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Div(
+                        ['About Us:',
+                            html.Br(),
+                            'Fengcheng Liu and Haotian Jin. We are students from UBC MDS Program.', 
+                            html.Br(),
+                            html.Br(),
+                            'Data source: ',
+                            html.A('Kaggle', href='https://www.kaggle.com/arashnic/hr-analytics-job-change-of-data-scientists', target="_blank"),
+                            html.Br(),
+                            'Github link: ',
+                            html.A('Visit our GitHub', href='https://github.com/ubco-mds-2020-labs/dashboard-project-data551_group9', target="_blank")
+                        ])
+                    ])
+                ],md = 5),
                 dbc.Col([
                     html.Iframe(
                     id='chart2',
@@ -112,7 +137,7 @@ app.layout = dbc.Container([
                                 max = hr3.city_development_index.max()+0.01,
                                 step = 0.05,
                                 value = [hr3.city_development_index.min(), hr3.city_development_index.min()+0.25])
-                            ], color = "#ffd699", style={'width': '400px', 'height': '38px', 'justify-content': 'center'})
+                        ], color = "#ffd699", style={'width': '400px', 'height': '38px', 'justify-content': 'center'})
                     ]),
                     html.Br(),
                     html.Br(),
@@ -148,7 +173,31 @@ app.layout = dbc.Container([
                         dcc.Dropdown(options = [
                             {"label": i, "value": i} for i in hr4.experience_level.unique()
                         ], value = "Missing information", placeholder = "Please enter", clearable = False,
-                        style={'width': '400px'}, id = "dropdown3")
+                        style={'width': '400px'}, id = "dropdown3"),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Div(
+                        ['About Us:',
+                            html.Br(),
+                            'Fengcheng Liu and Haotian Jin. We are students from UBC MDS Program.', 
+                            html.Br(),
+                            html.Br(),
+                            'Data source: ',
+                            html.A('Kaggle', href='https://www.kaggle.com/arashnic/hr-analytics-job-change-of-data-scientists', target="_blank"),
+                            html.Br(),
+                            'Github link: ',
+                            html.A('Visit our GitHub', href='https://github.com/ubco-mds-2020-labs/dashboard-project-data551_group9', target="_blank")
+                        ])
                     ])
                 ], md = 5),
                 dbc.Col([
@@ -160,9 +209,9 @@ app.layout = dbc.Container([
     ], colors={
         "border": "grey",
         "primary": "gery",
-        "background": "#ccf2ff",
+        "background": "#ccf2ff"
     })
-])
+])])
 
 @app.callback(
     Output("chart1", "srcDoc"),
