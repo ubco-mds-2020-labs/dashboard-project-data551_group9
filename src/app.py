@@ -53,9 +53,9 @@ app.layout = dbc.Container([
             dbc.Row([
                 dbc.Col([
                     html.Label([
-                        ' PLEASE SELECT EDUCATION LEVELS:',
-                        html.Br(),
-                        html.Br(),
+                        dcc.Markdown('''
+                            **PLEASE SELECT EDUCATION LEVELS:**
+                        '''),
                         dcc.Dropdown(options = [
                             {'label': col, 'value': col} for col in hr1.education_level.unique()
                         ], value = "Bachelor", placeholder = "Please enter", clearable = False,
@@ -77,9 +77,9 @@ app.layout = dbc.Container([
             dbc.Row([
                 dbc.Col([
                     html.Label([
-                        '  PLEASE SELECT PREVIOUS COMPANY SIZE:',
-                        html.Br(),
-                        html.Br(),
+                        dcc.Markdown('''
+                            **PLEASE SELECT PREVIOUS COMPANY SIZE:**
+                        '''),
                         dcc.RadioItems(id = "radio_items", options = [
                             {'label': ' ' + i, 'value': i} for i in [hr2.company_size.unique()[0], hr2.company_size.unique()[2], hr2.company_size.unique()[6], hr2.company_size.unique()[1], hr2.company_size.unique()[7], hr2.company_size.unique()[8], hr2.company_size.unique()[5], hr2.company_size.unique()[4], hr2.company_size.unique()[3]]
                         ], value = "50-99", labelStyle={'display': 'block'})])
@@ -87,7 +87,7 @@ app.layout = dbc.Container([
                 dbc.Col([
                     html.Iframe(
                     id='chart2',
-                    style={'border-width': '0', 'width': '150%', 'height': '600px'}),
+                    style={'border-width': '0', 'width': '150%', 'height': '700px'}),
                 ])
             ])
         ], label = "HR PERSPECTIVE"),
@@ -102,9 +102,9 @@ app.layout = dbc.Container([
             dbc.Row([
                 dbc.Col([
                     html.Label([
-                        "  PLEASE SELECT CITY DEVELOPMENT LEVEL RANGE:",
-                        html.Br(),
-                        html.Br(),
+                        dcc.Markdown('''
+                            **PLEASE SELECT CITY DEVELOPMENT LEVEL RANGE:**
+                        '''),
                         dbc.Card([
                             html.Br(),
                             dcc.RangeSlider(id = "rangeslider1", 
@@ -118,9 +118,9 @@ app.layout = dbc.Container([
                     html.Br(),
                     html.Br(),
                     html.Label([
-                        "  PLEASE SELECT LAST JOB SERVING Year:",
-                        html.Br(),
-                        html.Br(),
+                        dcc.Markdown('''
+                            **PLEASE SELECT LAST JOB SERVING Year:**
+                        '''),
                         dcc.Dropdown(options = [
                             {'label': col, 'value': col} for col in [hr3.last_new_job.unique()[2], hr3.last_new_job.unique()[0], hr3.last_new_job.unique()[5], hr3.last_new_job.unique()[4], hr3.last_new_job.unique()[3], hr3.last_new_job.unique()[1]]
                         ], value = "never", placeholder = "Please enter", clearable = False, 
@@ -142,9 +142,9 @@ app.layout = dbc.Container([
             dbc.Row([
                 dbc.Col([
                     html.Label([
-                        "  PLEASE SELECT EXPERIENCE LEVEL:",
-                        html.Br(),
-                        html.Br(),
+                        dcc.Markdown('''
+                            **PLEASE SELECT EXPERIENCE LEVEL:**
+                        '''),
                         dcc.Dropdown(options = [
                             {"label": i, "value": i} for i in hr4.experience_level.unique()
                         ], value = "Missing information", placeholder = "Please enter", clearable = False,
@@ -180,6 +180,8 @@ def plot_chart1(edu, edu2):
     width = 450,
     height = 400)
 
+    chart = alt.layer(chart).configure_axis(
+        labelFontSize=16, titleFontSize=20).configure_legend(labelFontSize=16, titleFontSize=16) 
     chart = chart.add_selection(click)
     return chart.to_html()
 
@@ -196,15 +198,15 @@ def plot_chart2(size):
     ).mark_area(
         opacity=0.5
     ).encode(
-        alt.X('training_hours', title = "Training Hours", axis=alt.Axis(format='~s')),
-        alt.Y('density:Q', title = "Hours Density"),
-        alt.Color('company_size:N', legend=alt.Legend(title='Company Size'))
+        alt.X('training_hours', title = "Training Hours", axis=alt.Axis(format='~s', labelFontSize=16, titleFontSize=20)),
+        alt.Y('density:Q', title = "Hours Density", axis=alt.Axis(labelFontSize=16, titleFontSize=20)),
+        alt.Color('company_size:N', legend=alt.Legend(title='Company Size', labelFontSize=16, titleFontSize=16))
     ).properties(
                 width = 450,
                 height = 400
     )
     full = chart.properties(height=80).add_selection(brush)
-    detail = chart.encode(alt.X('training_hours', title = "Training Hours", scale=alt.Scale(domain=brush)))
+    detail = chart.encode(alt.X('training_hours', title = "Training Hours", axis=alt.Axis(labelFontSize=16, titleFontSize=20), scale=alt.Scale(domain=brush)))
     
     chart = detail & full
     return chart.to_html()
@@ -226,7 +228,8 @@ def plot_chart3(range_val, last_job, last_job2):
                 width = 450,
                 height = 400
             )
-    
+    chart = alt.layer(chart).configure_axis(
+        labelFontSize=16, titleFontSize=20).configure_legend(labelFontSize=16, titleFontSize=16) 
     chart = chart.add_selection(click)
     return chart.to_html()
 
@@ -246,6 +249,8 @@ def plot_chart4(level):
                 width = 400,
                 height = 400
             )
+    chart = alt.layer(chart).configure_axis(
+        labelFontSize=16, titleFontSize=20).configure_legend(labelFontSize=16, titleFontSize=16) 
     return chart.to_html()
 
 if __name__ == "__main__":
