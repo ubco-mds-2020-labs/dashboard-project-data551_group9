@@ -1,5 +1,5 @@
 # Reflection
-----
+------
 ## What we have implemented:
 
 At milestone4 stage, we have implemented all four graphs into our hr-marketing-analytics project. Basically it suggests the way it is in our [milestone1](https://github.com/ubco-mds-2020-labs/dashboard-project-data551_group9/releases/tag/v1.0) stage. The difference is that we split four graphs into two tabs. Audience can select the topic that they want to explore, either HR perspective or marketing perspective. 
